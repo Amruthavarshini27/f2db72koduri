@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+    - let laptops   =[{name:"Hp",color :"silver",price:85000},{name:"Dell",color:"black",price:200000},{name:"Mac",color :"pink",price:250000}]
+  div(class="container-fluid")
+  div(class="row")
+            
+     
+    each laptop ,index in laptops
+                table(style='width:100%')
+                    tr
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{laptop.name}
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{laptop.color}
+                        div(class="col-sm-2" onclick=`buy(${index})`) $#{laptop.price}   
+     
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }
+
+      a(href="laptop") Go to laptop page
