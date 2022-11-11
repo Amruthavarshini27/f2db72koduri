@@ -1,12 +1,12 @@
 extends layout
 block content
   h1= title
-  - let results   =[{name:"Hp",color :"silver",price:85000},{name:"Dell",color:"black",price:200000},{name:"Mac",color :"pink",price:250000}]
+  - let results   =[{laptop_name:"Hp",laptop_color :"silver",laptop_price:85000},{laptop_name:"Dell",laptop_color:"black",laptop_price:200000},{laptop_name:"Mac",laptop_color :"pink",laptop_price:250000}]
   let items = results
   div(class="container-fluid")
   div(class="row")
   each value,index in results
-    div(class="col-sm-2" onclick=`buy(${index})`) #{value.name} #{value.color} #{value.price}
+    div(class="col-sm-2" onclick=`buy(${index})`) #{value.laptop_name} #{value.laptop_color} #{value.laptop_price}
   script.
     function buy(index)
     {
