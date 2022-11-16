@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+.laptopAttr { 
+  background-color: rgb(255, 200, 127); 
+  width: 120px; 
+} 

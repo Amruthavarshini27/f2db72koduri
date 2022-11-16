@@ -1,0 +1,43 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let laptopid = toShow._id 
+  - let laptop_name = toShow.laptop_name 
+  - let laptop_color = toShow.laptop_color
+  - let laptop_price = toShow.laptop_price
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{laptopid} 
+  - let actionid = "/resource/laptops/" + laptopid 
+  form(id='laptopForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.laptopAttr(for='laptop_name') laptop laptop_name 
+        input#laptop_name(type='text', name='laptop_name', value= laptop_name ) 
+    div.form-group 
+        label.laptopAttr(for='laptop_color') laptop laptop_color
+        input#laptop_color(type='text', name='laptop_color', value= laptop_color ) 
+    div.form-group 
+        label.laptopAttr(for='laptop_price') laptop laptop_price 
+        input#laptop_price(type='number', name='laptop_price', value= laptop_price) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['laptopForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

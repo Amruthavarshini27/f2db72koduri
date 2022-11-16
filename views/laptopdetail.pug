@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let laptopid = toShow._id 
+  - let laptop_name = toShow.laptop_name 
+  - let laptop_color = toShow.laptop_color
+  - let laptop_price = toShow.laptop_price
+  div 
+    div.row 
+      div(class='laptopAttr mr-3') laptop ID is: 
+      div #{laptopid} 
+    div.row 
+      div(class='laptopAttr mr-3') laptop laptop_name is: 
+      div #{laptop_name} 
+    div.row 
+      div(class='laptopAttr mr-3') laptop laptop_color is: 
+      div #{laptop_color} 
+    div.row 
+      div(class='laptopAttr mr-3') laptop laptop_price is: 
+      div #{laptop_price} 

@@ -1,0 +1,54 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null) 
+    h2 No instance to delete 
+  else 
+    - let laptopid = toShow._id 
+    - let laptop_name= toShow.laptop_name
+    - let laptoplaptop_color = toShow.laptop_color 
+    - let laptoplaptop_price = toShow.laptop_price 
+    - let actionid = "/resource/laptops/" + laptopid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='laptopAttr mr-3') laptop ID is: 
+        div #{laptopid} 
+      div.row 
+        div(class='laptopAttr mr-3') laptop laptop_name is: 
+        div #{laptop_name} 
+      div.row 
+        div(class='laptopAttr mr-3') laptop laptop_color is: 
+        div #{laptoplaptop_color} 
+      div.row 
+        div(class='laptopAttr mr-3') laptop laptop_price is: 
+        div #{laptoplaptop_price} 
+ 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+ 
+  script. 
+    function cancel() { 
+      // Go back to the home page for the laptop collection 
+      window.location.href='/laptops' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      //Dont need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/laptops' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    } 
+    
