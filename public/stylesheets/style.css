@@ -6,7 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+
 .laptopAttr { 
   background-color: rgb(255, 200, 127); 
   width: 120px; 
 } 
+
+.laptopStyle { 
+  background-color: red; 
+  width: 120px; 
+
+  font-style: oblique;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: medium;
+  font: 100;
+  font: 1em sans-serif;
+  font-feature-settings: "abvf";
+  text-shadow: 2px 2px 5px red;
+  
+}

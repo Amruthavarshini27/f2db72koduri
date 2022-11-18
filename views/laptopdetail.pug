@@ -1,8 +1,10 @@
 extends layout 
  
 block content 
-  h1= title 
- 
+  h1= title
+  if(toShow==null) 
+     h2 no instance to Detail 
+    else
   - let laptopid = toShow._id 
   - let laptop_name = toShow.laptop_name 
   - let laptop_color = toShow.laptop_color
