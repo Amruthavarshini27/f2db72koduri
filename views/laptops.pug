@@ -1,8 +1,20 @@
 extends layout
 block content
   h1= title
-  - let results   =[{laptop_name:"Hp",laptop_color :"silver",laptop_price:85000},{laptop_name:"Dell",laptop_color:"black",laptop_price:200000},{laptop_name:"Mac",laptop_color :"pink",laptop_price:250000}]
-  let items = results
+  - let items = results
+  div(class="container-fluid") 
+    div(class="row m-1") 
+      each item in items  
+        - let destination = `dispatch(\"/laptops/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{item.laptop_name}(#{item.laptop_color}) is #{item.laptop_price} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+    script. 
+     function dispatch(path){ 
+       window.location.href=path 
+      } 
+  //- let results   =[{laptop_name:"Hp",laptop_color :"silver",laptop_price:85000},{laptop_name:"Dell",laptop_color:"black",laptop_price:200000},{laptop_name:"Mac",laptop_color :"pink",laptop_price:250000}]
+
   div(class="container-fluid")
   div(class="row")
   each value,index in results
@@ -13,3 +25,4 @@ block content
       alert(`You purchased Item ${index+1}`)
     }
     a(href="laptop") Go to laptop page
+    
