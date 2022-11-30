@@ -1,19 +1,12 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  p this is assignment-10
-  button(type="button",class="btn btn-danger" onclick="dobump()") Press Me
-  div(id='bump') Bump the count 
-  script(type='text/javascript').
-    var count=0
-    var bump=1
-    function dobump(){
-    count=bump+count
-    bump+=1
-    document.getElementById('bump').innerHTML="count :"+count +"with bump :"+bump;
-    
-    };
-  
-  
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/laptop") Take me to Laptop 
+    br 
+    a(href="/logout") Logout 

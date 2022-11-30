@@ -1,13 +1,19 @@
 extends layout
 block content
   h1= title
+  - let Create = `dispatch(\"/laptop/create\")`
+  button.btn( class="btn-primary ml-1", onclick= Create) Create
   - let items = results
   div(class="container-fluid") 
     div(class="row m-1") 
       each item in items  
-        - let destination = `dispatch(\"/laptops/update?id=${item._id}\")` 
+        - let destination = `dispatch(\"/laptop/update?id=${item._id}\")`
+        - let detail = `dispatch(\"/laptop/detail?id=${item._id}\")`
+        - let Delete = `dispatch(\"/laptop/delete?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Item #{item.laptop_name}(#{item.laptop_color}) is #{item.laptop_price} 
-          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          button.btn( class="btn-warning ml-1", onclick= detail) Details
+          button.btn( class="btn-danger ml-1", onclick= Delete) Delete
    
     script. 
      function dispatch(path){ 
